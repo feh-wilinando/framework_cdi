@@ -1,22 +1,30 @@
 package br.com.alura.framework_cdi.interceptors.tx;
 
-import javax.enterprise.inject.Instance;
+import java.io.Serializable;
+import java.util.logging.Logger;
+
 import javax.inject.Inject;
+import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 import javax.persistence.EntityManager;
 
 @Interceptor
 @Trasactional
-public class ManagerTransaction {
+public class ManagerTransaction implements Serializable{
+
+	private static final long serialVersionUID = -8923127888496650946L;
 
 	@Inject
-	private Instance<EntityManager> instanceManager;
-		
+	private EntityManager manager;
+	
+	@Inject
+	private transient Logger logger;
+	
+	@AroundInvoke
 	public Object executeWithTransaction(InvocationContext context){
-		
-		EntityManager manager = instanceManager.get();
-		
+			
+		logger.info("Begin Transaction");
 		
 		manager.getTransaction().begin();
 		
@@ -24,11 +32,15 @@ public class ManagerTransaction {
 		
 		try {
 			result = context.proceed();
-		} catch (Exception e) {			
+		} catch (Exception e) {
+			
+			logger.info("Rollback Transaction");
+			
 			manager.getTransaction().rollback();			
 			throw new RuntimeException(e);
 		}
 		
+		logger.info("Commit Transaction");
 		manager.getTransaction().commit();
 		
 		return result;

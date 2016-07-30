@@ -1,22 +1,32 @@
 package br.com.alura.framework_cdi.jpa;
 
+import java.io.Serializable;
+import java.util.Properties;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Alternative;
 import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-@Alternative
+import br.com.alura.framework_cdi.configuration.Configurations;
+
+
 @ApplicationScoped
-public class EntityManagerProductor {
+public class EntityManagerProductor implements Serializable{
 				
-	private final String perSistenceUnitKey = "CDI_PERSISTENCE_UNIT";
+
+	private static final long serialVersionUID = -448805665218824089L;
+
 	private EntityManagerFactory factory;
+	
+	@Inject @Configurations
+	private Properties configurations;
 	
 	@Produces
 	@RequestScoped
@@ -35,7 +45,7 @@ public class EntityManagerProductor {
 	@PostConstruct
 	public void postConstruct(){
 		
-		String persistenceUnitName = System.getenv().get(perSistenceUnitKey);
+		String persistenceUnitName = configurations.getProperty("framework.persistence.unit");
 		
 		factory = Persistence.createEntityManagerFactory(persistenceUnitName);
 	}

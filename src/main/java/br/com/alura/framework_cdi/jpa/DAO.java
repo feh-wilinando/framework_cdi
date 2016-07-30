@@ -1,12 +1,16 @@
 package br.com.alura.framework_cdi.jpa;
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.enterprise.inject.Vetoed;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 
-public class DAO<M, P> {
+@Vetoed
+public class DAO<M, P> implements Serializable{
 
+	private static final long serialVersionUID = -6732949028086409600L;
 	private EntityManager manager;
 	private Class<M> modelClass;
 
