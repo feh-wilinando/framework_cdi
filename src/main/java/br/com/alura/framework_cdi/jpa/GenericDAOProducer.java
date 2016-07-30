@@ -10,7 +10,7 @@ import javax.persistence.EntityManager;
 
 
 @SuppressWarnings("unchecked")
-public class GenericDAOProductor implements Serializable{
+public class GenericDAOProducer implements Serializable{
 
 	private static final long serialVersionUID = -309952515118342501L;
 

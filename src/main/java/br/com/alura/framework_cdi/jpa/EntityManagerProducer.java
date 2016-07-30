@@ -18,7 +18,7 @@ import br.com.alura.framework_cdi.configuration.Configurations;
 
 
 @ApplicationScoped
-public class EntityManagerProductor implements Serializable{
+public class EntityManagerProducer implements Serializable{
 				
 
 	private static final long serialVersionUID = -448805665218824089L;
