@@ -1,8 +1,8 @@
-package br.com.alura.framework_cdi.jsf.factory;
+package br.com.alura.framework_cdi.jsf.producer;
 
 import java.io.Serializable;
+import java.util.Map;
 
-import javax.enterprise.inject.Alternative;
 import javax.enterprise.inject.Produces;
 import javax.faces.application.Application;
 import javax.faces.application.NavigationHandler;
@@ -11,7 +11,10 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
 
-@Alternative
+import br.com.alura.framework_cdi.jsf.annotation.ApplicationMap;
+import br.com.alura.framework_cdi.jsf.annotation.RequestMap;
+import br.com.alura.framework_cdi.jsf.annotation.SessionMap;
+
 public class JSFProducer implements Serializable {
 	
 	private static final long serialVersionUID = 6629265173006839120L;
@@ -34,6 +37,21 @@ public class JSFProducer implements Serializable {
 	@Produces	
 	public Application getApplication(){
 		return getFacesContext().getApplication();
+	}
+	
+	@Produces @SessionMap
+	public Map<String, Object> getSessionMap(){
+		return getExternalContext().getSessionMap();
+	}
+	
+	@Produces @ApplicationMap
+	public Map<String, Object> getApplicationMap(){
+		return getExternalContext().getApplicationMap();
+	}
+	
+	@Produces @RequestMap
+	public Map<String, Object> getRequestMap(){
+		return getExternalContext().getRequestMap();
 	}
 	
 	@Produces

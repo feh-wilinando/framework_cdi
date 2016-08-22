@@ -1,4 +1,4 @@
-package br.com.alura.framework_cdi.interceptors.tx;
+package br.com.alura.framework_cdi.interceptors;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -9,6 +9,5 @@ import javax.interceptor.InterceptorBinding;
 
 @InterceptorBinding
 @Retention(RetentionPolicy.RUNTIME)
-@Target(value={ElementType.TYPE, ElementType.METHOD})
-public @interface Trasactional {
-}
+@Target(value={ElementType.TYPE})
+public @interface Auditable {}

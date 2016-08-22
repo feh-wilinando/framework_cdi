@@ -1,4 +1,4 @@
-package br.com.alura.framework_cdi.jsf.phaselistener.phases;
+package br.com.alura.framework_cdi.jsf.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,4 +10,4 @@ import javax.inject.Qualifier;
 @Qualifier
 @Target({ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface RenderResponse {}
+public @interface UpdateModelValues {}

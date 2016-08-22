@@ -9,14 +9,14 @@ import javax.enterprise.util.AnnotationLiteral;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 
-import br.com.alura.framework_cdi.jsf.phaselistener.moment.After;
-import br.com.alura.framework_cdi.jsf.phaselistener.moment.Before;
-import br.com.alura.framework_cdi.jsf.phaselistener.phases.ApplyRequestValue;
-import br.com.alura.framework_cdi.jsf.phaselistener.phases.InvokeApplication;
-import br.com.alura.framework_cdi.jsf.phaselistener.phases.ProcessValidations;
-import br.com.alura.framework_cdi.jsf.phaselistener.phases.RenderResponse;
-import br.com.alura.framework_cdi.jsf.phaselistener.phases.RestoreView;
-import br.com.alura.framework_cdi.jsf.phaselistener.phases.UpdateModelValues;
+import br.com.alura.framework_cdi.jsf.annotation.After;
+import br.com.alura.framework_cdi.jsf.annotation.ApplyRequestValue;
+import br.com.alura.framework_cdi.jsf.annotation.Before;
+import br.com.alura.framework_cdi.jsf.annotation.InvokeApplication;
+import br.com.alura.framework_cdi.jsf.annotation.ProcessValidations;
+import br.com.alura.framework_cdi.jsf.annotation.RenderResponse;
+import br.com.alura.framework_cdi.jsf.annotation.RestoreView;
+import br.com.alura.framework_cdi.jsf.annotation.UpdateModelValues;
 
 @SuppressWarnings("serial")
 @Vetoed
